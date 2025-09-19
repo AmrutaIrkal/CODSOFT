@@ -3,278 +3,442 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Golden Grains</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Amu's Portfolio</title>
   <style>
-    * {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-    body {background:#f9fafb;color:#333;line-height:1.6;}
+    /* Reset */
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif;}
+
+    body {
+      background: #fefefe;
+      color: #333;
+      line-height: 1.6;
+    }
 
     /* Header */
     header {
-      background:linear-gradient(90deg,#4f46e5,#6366f1);
-      padding:15px 0;position:sticky;top:0;z-index:100;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    }
-    .nav-container {width:90%;margin:auto;display:flex;justify-content:space-between;align-items:center;}
-    .logo {color:#fff;font-size:26px;font-weight:700;letter-spacing:1px;}
-    nav ul {display:flex;list-style:none;gap:25px;}
-    nav ul li a {
-      color:#fff;text-decoration:none;font-weight:500;position:relative;transition:0.3s;
-    }
-    nav ul li a::after {
-      content:"";position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#facc15;transition:0.3s;
-    }
-    nav ul li a:hover::after {width:100%;}
-
-    /* Hero */
-    .hero {
-      display:flex;align-items:center;justify-content:space-between;gap:40px;
-      padding:100px 10%;background:linear-gradient(135deg,#4f46e5,#3b82f6);color:#fff;
-    }
-    .hero-content {max-width:50%;}
-    .hero-content h1 {font-size:50px;margin-bottom:20px;}
-    .hero-content p {font-size:18px;margin-bottom:30px;}
-    .btn {display:inline-block;background:#facc15;color:#333;padding:12px 28px;border-radius:30px;font-weight:600;text-decoration:none;transition:0.3s;}
-    .btn:hover {background:#eab308;transform:translateY(-3px);}
-    .hero img {max-width:420px;border-radius:20px;box-shadow:0 15px 25px rgba(0,0,0,0.3);}
-
-    /* Section Title */
-    .section-title {text-align:center;font-size:36px;margin-bottom:50px;color:#4f46e5;position:relative;}
-    .section-title::after {
-      content:"";display:block;width:80px;height:4px;background:#facc15;margin:10px auto 0;border-radius:2px;
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      background: linear-gradient(90deg, #ff9800, #ff5722);
+      color: #fff;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 50px;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    
-    /* Features */
-.features {
-  background: #f3f4f6;
-  padding: 80px 10%;
-}
+    header h1 { font-size: 22px; letter-spacing: 1px; font-weight: bold; }
+    header nav a {
+      color: #fff; text-decoration: none; margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+    }
+    header nav a:hover { 
+      color: #222; 
+      transform: scale(1.1);
+    }
 
-.feature-box {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.feature {
-  background: #fff;
-  padding: 30px;
-  flex: 1 1 250px;
-  max-width: 300px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
-}
-
-.feature:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-}
-
-
-.features .feature img {
-  width: 100px;       
-  height: 100px;
-  object-fit: cover;  
-  border-radius: 50%; 
-  display: block;
-  margin: 0 auto 15px; 
-}
-
-.feature h3 {
-  margin-bottom: 10px;
-  color: #4f46e5;
-}
-
+    section {
+      padding: 100px 50px;
+      min-height: 100vh;
+    }
 
     /* About */
-    .about {padding:80px 10%;display:flex;align-items:center;gap:50px;flex-wrap:wrap;}
-    .about img {max-width:450px;border-radius:15px;box-shadow:0 10px 20px rgba(0,0,0,0.2);}
-    .about-content {flex:1;min-width:280px;}
-    .about-content h2 {margin-bottom:20px;color:#4f46e5;}
-    .about-content p {font-size:18px;color:#555;}
+    #about {
+      display: flex; justify-content: center; align-items: center;
+      flex-direction: column; text-align: center;
+      background: linear-gradient(120deg, #fff5e6, #ffe0b2);
+      border-radius: 20px;
+      margin-top: 60px;
+      padding: 60px 30px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+    #about img {
+      width: 160px; height: 160px; border-radius: 50%;
+      border: 5px solid #ff5722; margin-bottom: 20px;
+      transition: transform 0.4s ease;
+    }
+    #about img:hover { transform: scale(1.15) rotate(5deg); }
+    #about h2 { color: #ff5722; margin-bottom: 10px; }
+    #about p { font-size: 18px; max-width: 600px; }
 
-    /* Products */
-    .products {
-  background: #fff;
-  padding: 80px 10%;
-  text-align: center;
-}
+    /* Skills */
+    #skills h2, #projects h2, #contact h2 { 
+      margin-bottom: 25px; 
+      color: #ff5722;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .skills-list {
+      display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;
+    }
+    .skill {
+      background: linear-gradient(45deg, #ff9800, #ff5722);
+      color: #fff; padding: 12px 25px;
+      border-radius: 25px; font-size: 15px;
+      font-weight: 500;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .skill:hover { 
+      transform: translateY(-6px); 
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25); 
+    }
 
-.product-grid {
-  display: flex;
-  gap: 25px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+    /* Projects */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    .project {
+      background: #fff; border-radius: 12px;
+      overflow: hidden; 
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project:hover { 
+      transform: translateY(-10px) scale(1.02); 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25); 
+    }
+    .project img { width: 100%; height: 180px; object-fit: cover; }
+    .project h3 { padding: 15px; background: #fff5e6; color: #ff5722; }
 
-.product {
+/* Internship Section */
+#internship {
+  padding: 60px 10%;
+  font-family: "Poppins", sans-serif;
   background: #f9fafb;
-  padding: 20px;
-  border-radius: 15px;
-  width: 230px;
   text-align: center;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
 }
 
-.product:hover {
-  transform: translateY(-8px);
+/* Section Title */
+#internship h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #ff7a18; /* Orange highlight */
 }
 
-.product h3 {
-  color: #4f46e5;
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* Project Card */
+.project {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-align: center;
+}
+
+.project:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+/* Project Image */
+.project img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+  transition: transform 0.3s ease;
+}
+
+.project:hover img {
+  transform: scale(1.05); /* subtle zoom effect */
+}
+
+/* Project Title */
+.project h3 {
+  font-size: 1.2rem;
+  margin: 15px 0 10px;
+  color: #333;
+}
+
+/* Project Description */
+.project p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.5;
+  padding: 0 15px 20px;
+}
+
+  /* Resume Section */
+#resume {
+  padding: 60px 20px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Heading */
+#resume h2 {
+  color: hsl(26, 90%, 47%);  /* Orange color */
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Paragraph */
+#resume p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Resume Button */
+.btn-resume {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  background: linear-gradient(135deg, #ff7a18, #ffb347); /* Orange gradient */
+  color: #fff; /* White text */
+  transition: transform .15s ease, box-shadow .15s ease, background .3s;
+}
+
+.btn-resume:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(255, 122, 24, 0.6);
+  background: linear-gradient(135deg, #ff6a00, #ff9500); /* Darker hover gradient */
+}
+ /* contact */
+
+  #contact {
+    background: #fff;
+    color: #333;
+    text-align: center;
+    padding: 60px 20px;
+    border-radius: 12px;
+    margin: 40px auto;
+    max-width: 700px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    animation: fadeInUp 1s ease;
+  }
+
+  #contact h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #ff5722;
+  }
+
+  .contact-info p {
+    font-size: 18px;
+    margin: 15px 0;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .contact-info p:hover {
+    transform: scale(1.05);
+    color: #ff5722;
+  }
+
+  .contact-info a {
+    color: #ff5722;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .contact-info a:hover {
+    color: #e64a19;
+  }
+
+  @keyframes fadeInUp {
+    from {opacity: 0; transform: translateY(40px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+
+
+    /* Footer */
+    footer {
+  background: #fff; /* white background */
+  color: #000;      /* black text */
+  text-align: center;
+  padding: 20px 10px;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.footer-marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
   margin-bottom: 8px;
 }
 
-/* equal size images*/
-.products .product img {
-  width: 200px;       
-  height: 200px;      
-  object-fit: cover; 
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px; 
+.footer-marquee p {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left 15s linear infinite;
+  font-size: 14px;
+  color: #000; /* black text */
 }
 
-    /* Contact */
-    .contact {background:#f3f4f6;padding:80px 10%;text-align:center;}
-    .contact form {max-width:500px;margin:20px auto;display:flex;flex-direction:column;gap:15px;}
-    .contact input,.contact textarea {
-      padding:12px;border:1px solid #ddd;border-radius:8px;font-size:16px;
-    }
-    .contact button {background:#4f46e5;color:#fff;padding:12px;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:0.3s;}
-    .contact button:hover {background:#4338ca;}
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 
-    /* Footer */
-    footer {background:#111827;color:#fff;text-align:center;padding:20px;}
-    footer a {color:#facc15;text-decoration:none;margin:0 10px;}
-    footer a:hover {text-decoration:underline;}
+footer p {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #000; /* black text */
+}
 
-    /* Responsive */
-    @media(max-width:900px){
-      .hero{flex-direction:column;text-align:center;}
-      .hero-content{max-width:100%;}
-      .about{flex-direction:column;}
+.brand {
+  font-weight: bold;
+  color: #ff4b2b; /* thoda attractive accent color (orange-red) */
+}
+
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
     }
+
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body>
 
   <!-- Header -->
   <header>
-    <div class="nav-container">
-      <div class="logo">Golden Grains</div>
-      <nav>
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+    <h1> Portfolio</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#internship">Internship Projects</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <div class="hero-content">
-      <h1>From Farm to Your Home</h1>
-      <p>Golden Grains brings you premium quality grains directly from farmers with trust, purity and freshness.
-        Fresh, Pure & Affordable Grains Delivered at Your Doorstep.
-      </p>
-      <a href="#products" class="btn">Explore Products</a>
-    </div>
-    <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\img1 (2).jpg" alt="Golden Grains">
-  </section>
-
-  <!-- Features -->
-  <section class="features" id="features">
-    <h2 class="section-title">Why Choose Golden Grains</h2>
-    <div class="feature-box">
-      <div class="feature">
-        <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\img2 (2).jpg" alt="Fast Delivery">
-        <h3>Fast Delivery</h3>
-        <p>Get fresh grains at your doorstep with speedy and reliable delivery.</p>
-      </div>
-      <div class="feature">
-        <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\img3 (2).jpg" alt="Premium Quality">
-        <h3>Premium Quality</h3>
-        <p>Only the finest grains, directly sourced from trusted farmers.</p>
-      </div>
-      <div class="feature">
-        <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\img4 (2).jpg" alt="Secure Payment">
-        <h3>Secure Payments</h3>
-        <p>Enjoy hassle-free shopping with 100% secure transactions.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- About -->
-  <section class="about" id="about">
-    <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\img5 (2).jpg" alt="About Golden Grains">
-    <div class="about-content">
-      <h2>About Us</h2>
-      <p>At Golden Grains, we believe in bridging the gap between farmers and customers. 
-      Our mission is to deliver farm-fresh grains with complete transparency, 
-      ensuring health, trust, and sustainability for every family.
-      Golden Grains connects farmers and customers directly.
-      Our mission is to provide fresh and affordable grains to every household.</p>
+  <section id="about">
+    <img src="C:\Users\Shri\Downloads\Level1\Portfolio\image\WhatsApp Image 2025-09-18 at 18.22.39_c5c18e89.jpg" alt="Profile">
+    <h2>Hi, I'm Amruta 👩‍💻</h2>
+    <p>I’m Amruta, a passionate and detail-oriented Web Developer with strong skills in HTML, CSS, JavaScript, Bootstrap, Java, and MySQL. I enjoy creating responsive, user-friendly, and visually appealing websites with clean code and creative designs. Currently, I am enhancing my skills through projects and internships, building a solid foundation in both frontend and backend development. My goal is to grow as a professional developer while contributing innovative and impactful solutions</p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="skills-list">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">Bootstrap</div>
+      <div class="skill">Java</div>
+      <div class="skill">MySQL</div>
     </div>
   </section>
 
-  <!-- Products -->
-  <section class="products" id="products">
-    <h2 class="section-title">Our Products</h2>
-    <div class="product-grid">
-      <div class="product">
-        <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\Wheatt.jpg" alt="Wheat">
-        <h3>Wheat</h3>
-        <p>High-nutrition wheat grains perfect for daily chapatis.</p>
-      </div>
-      <div class="product">
-        <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\ricee.jpg" alt="Rice">
-        <h3>Rice</h3>
-        <p>Aromatic and premium quality rice for your meals.</p>
-      </div>
-      <div class="product">
-        <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\Pulses.jpg" alt="Pulses">
-        <h3>Pulses</h3>
-        <p>Rich in proteins, a healthy choice for your family.</p>
-      </div>
-      <div class="product">
-        <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\Millets.jpg" alt="Millets">
-        <h3>Millets</h3>
-        <p>Wholesome and organic millets for balanced nutrition.</p>
-      </div>
-    </div>
-  </section>
+  <!-- Projects -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects-grid">
 
-  <!-- Contact -->
-  <section class="contact" id="contact">
-    <h2 class="section-title">Get in Touch</h2>
-    <p>Have questions or bulk order inquiries? Write to us!</p>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+    <div class="project">
+      <img src="C:\Users\Shri\Downloads\Level1\Portfolio\ass\pro1.png" alt="Project 1">
+      <h3>Golden Grains (College Project)</h3>
+      <p style="padding: 0 15px 15px; font-size: 15px;">
+        A supply chain web application developed for farmers and customers. 
+        Built with <b>Java, JSP, MySQL, Bootstrap, and BCrypt security</b> 
+        featuring Admin and Customer roles.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Internship Projects -->
+<section id="internship">
+  <h2>Internship Projects (CodSoft)</h2>
+  <div class="projects-grid">
+
+    <!-- Project 1: Portfolio -->
+    <div class="project">
+      <img src="C:\Users\Shri\Downloads\Level1\Portfolio\ass\internpro1.png" alt="Portfolio Website">
+      <h3>Portfolio Website</h3>
+      <p style="padding: 0 15px 15px; font-size: 15px;">
+        Created a personal portfolio website showcasing skills and projects using 
+        <b>HTML, CSS, and JavaScript</b>. Designed with a modern UI and responsive layout.
+      </p>
+    </div>
+
+    <!-- Project 2: Landing Page -->
+    <div class="project">
+      <img src="C:\Users\Shri\Downloads\Level1\Portfolio\ass\internpro2.png" alt="Landing Page">
+      <h3>Landing Page</h3>
+      <p style="padding: 0 15px 15px; font-size: 15px;">
+        Designed a responsive landing page with <b>HTML, CSS, and Bootstrap</b>. 
+        Focused on animations, hover effects, and mobile-friendly design.
+      </p>
+    </div>
+
+    <!-- Project 3: Calculator -->
+    <div class="project">
+      <img src="C:\Users\Shri\Downloads\Level1\Portfolio\ass\internpro3.png" alt="Calculator Web App">
+      <h3>Calculator Web App</h3>
+      <p style="padding: 0 15px 15px; font-size: 15px;">
+        Built a functional calculator using <b>HTML, CSS, and JavaScript</b>. 
+        Provided clean UI and interactive button operations.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Resume Download -->
+<section id="resume" style="padding: 40px 20px; text-align: center;">
+  <h2>Download My Resume</h2>
+  <p>Click below to download my resume (PDF).</p>
+
+  <a href="C:\Users\Shri\Downloads\Level1\Portfolio\ass\AmrutaIrkalResume.pdf" download="Amruta_Irkal_Resume.pdf" class="btn-resume" aria-label="Download resume as PDF">
+    ⬇ Download Resume (PDF)
+  </a>
+</section>
+
+ <!-- Contact Section -->
+<section id="contact">
+  <h2>Contact Me</h2>
+  <div class="contact-info">
+    <p><strong>Phone:</strong> +91 7720865882</p>
+    <p><strong>Email:</strong> <a href="mailto:amruta@example.com">amrutairkal7@gmail.com</a></p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/amruta-ir" target="_blank">https://www.linkedin.com/in/amruta-irkal-05b232380</a></p>
+  </div>
+</section>
+
 
   <!-- Footer -->
-  <footer>
-    <p>© 2025 Golden Grains | All Rights Reserved</p>
-    <p>
-      <a href="#">Facebook</a> | 
-      <a href="#">Instagram</a> | 
-      <a href="#">LinkedIn</a>
-    </p>
-  </footer>
+  <div class="footer-marquee">
+    <p>✨ Welcome to Amruta's Portolio ✨ | Stay Connected | Keep Smiling 😊</p>
+  </div>
+  <p>&copy; 2025 <span class="brand">Amruta</span> | All Rights Reserved</p>
 
 </body>
 </html>
+
+
+
+ 
