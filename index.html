@@ -3,170 +3,278 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modern Calculator</title>
+  <title>Golden Grains</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* General Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    body {background:#f9fafb;color:#333;line-height:1.6;}
+
+    /* Header */
+    header {
+      background:linear-gradient(90deg,#4f46e5,#6366f1);
+      padding:15px 0;position:sticky;top:0;z-index:100;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
+    .nav-container {width:90%;margin:auto;display:flex;justify-content:space-between;align-items:center;}
+    .logo {color:#fff;font-size:26px;font-weight:700;letter-spacing:1px;}
+    nav ul {display:flex;list-style:none;gap:25px;}
+    nav ul li a {
+      color:#fff;text-decoration:none;font-weight:500;position:relative;transition:0.3s;
+    }
+    nav ul li a::after {
+      content:"";position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#facc15;transition:0.3s;
+    }
+    nav ul li a:hover::after {width:100%;}
+
+    /* Hero */
+    .hero {
+      display:flex;align-items:center;justify-content:space-between;gap:40px;
+      padding:100px 10%;background:linear-gradient(135deg,#4f46e5,#3b82f6);color:#fff;
+    }
+    .hero-content {max-width:50%;}
+    .hero-content h1 {font-size:50px;margin-bottom:20px;}
+    .hero-content p {font-size:18px;margin-bottom:30px;}
+    .btn {display:inline-block;background:#facc15;color:#333;padding:12px 28px;border-radius:30px;font-weight:600;text-decoration:none;transition:0.3s;}
+    .btn:hover {background:#eab308;transform:translateY(-3px);}
+    .hero img {max-width:420px;border-radius:20px;box-shadow:0 15px 25px rgba(0,0,0,0.3);}
+
+    /* Section Title */
+    .section-title {text-align:center;font-size:36px;margin-bottom:50px;color:#4f46e5;position:relative;}
+    .section-title::after {
+      content:"";display:block;width:80px;height:4px;background:#facc15;margin:10px auto 0;border-radius:2px;
     }
 
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #ffffff; /* White background */
-    }
+    
+    /* Features */
+.features {
+  background: #f3f4f6;
+  padding: 80px 10%;
+}
 
-    .calculator {
-      width: 320px;
-      background: #000000; /* Calculator box black */
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      animation: fadeIn 1s ease-in-out;
-    }
+.feature-box {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-    /* Display */
-    .display {
-      background: #1a1a1a; /* Dark grey for display */
-      color: #ffffff;       /* White text */
-      font-size: 2rem;
-      padding: 20px;
-      text-align: right;
-      min-height: 70px;
-      word-wrap: break-word;
-      border-bottom: 1px solid #333;
-    }
+.feature {
+  background: #fff;
+  padding: 30px;
+  flex: 1 1 250px;
+  max-width: 300px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
 
-    /* Buttons Grid */
-    .buttons {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      padding: 15px;
-    }
+.feature:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
 
-    button {
-      background: #333333; /* Dark grey buttons */
-      color: #ffffff;      /* White text */
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 12px;
-      padding: 20px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
 
-    button:hover {
-      background: #555555;
-      transform: scale(1.05);
-    }
+.features .feature img {
+  width: 100px;       
+  height: 100px;
+  object-fit: cover;  
+  border-radius: 50%; 
+  display: block;
+  margin: 0 auto 15px; 
+}
 
-    button:active {
-      transform: scale(0.95);
-    }
+.feature h3 {
+  margin-bottom: 10px;
+  color: #4f46e5;
+}
 
-    .operator {
-      background: #ff8c00;
-      color: #fff;
-    }
 
-    .operator:hover {
-      background: #e67e22;
-    }
+    /* About */
+    .about {padding:80px 10%;display:flex;align-items:center;gap:50px;flex-wrap:wrap;}
+    .about img {max-width:450px;border-radius:15px;box-shadow:0 10px 20px rgba(0,0,0,0.2);}
+    .about-content {flex:1;min-width:280px;}
+    .about-content h2 {margin-bottom:20px;color:#4f46e5;}
+    .about-content p {font-size:18px;color:#555;}
 
-    .equal {
-      background: #27ae60;
-      color: #fff;
-      grid-column: span 2;
-    }
+    /* Products */
+    .products {
+  background: #fff;
+  padding: 80px 10%;
+  text-align: center;
+}
 
-    .equal:hover {
-      background: #2ecc71;
-    }
+.product-grid {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-    .clear {
-      background: #e74c3c;
-      color: #fff;
-    }
+.product {
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 15px;
+  width: 230px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
 
-    .clear:hover {
-      background: #c0392b;
-    }
+.product:hover {
+  transform: translateY(-8px);
+}
 
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+.product h3 {
+  color: #4f46e5;
+  margin-bottom: 8px;
+}
+
+/* equal size images*/
+.products .product img {
+  width: 200px;       
+  height: 200px;      
+  object-fit: cover; 
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px; 
+}
+
+    /* Contact */
+    .contact {background:#f3f4f6;padding:80px 10%;text-align:center;}
+    .contact form {max-width:500px;margin:20px auto;display:flex;flex-direction:column;gap:15px;}
+    .contact input,.contact textarea {
+      padding:12px;border:1px solid #ddd;border-radius:8px;font-size:16px;
+    }
+    .contact button {background:#4f46e5;color:#fff;padding:12px;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:0.3s;}
+    .contact button:hover {background:#4338ca;}
+
+    /* Footer */
+    footer {background:#111827;color:#fff;text-align:center;padding:20px;}
+    footer a {color:#facc15;text-decoration:none;margin:0 10px;}
+    footer a:hover {text-decoration:underline;}
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero{flex-direction:column;text-align:center;}
+      .hero-content{max-width:100%;}
+      .about{flex-direction:column;}
     }
   </style>
 </head>
 <body>
 
-  <div class="calculator">
-    <div class="display" id="display">0</div>
-    <div class="buttons">
-      <button class="clear">C</button>
-      <button class="operator">/</button>
-      <button class="operator">*</button>
-      <button class="operator">-</button>
-
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-      <button class="operator">+</button>
-
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>.</button>
-
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>0</button>
-
-      <button class="equal">=</button>
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">Golden Grains</div>
+      <nav>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <script>
-    const display = document.getElementById("display");
-    const buttons = document.querySelectorAll("button");
-    let currentInput = "";
-    let resetNext = false;
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>From Farm to Your Home</h1>
+      <p>Golden Grains brings you premium quality grains directly from farmers with trust, purity and freshness.
+        Fresh, Pure & Affordable Grains Delivered at Your Doorstep.
+      </p>
+      <a href="#products" class="btn">Explore Products</a>
+    </div>
+    <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\img1 (2).jpg" alt="Golden Grains">
+  </section>
 
-    buttons.forEach(button => {
-      button.addEventListener("click", () => {
-        const value = button.textContent;
+  <!-- Features -->
+  <section class="features" id="features">
+    <h2 class="section-title">Why Choose Golden Grains</h2>
+    <div class="feature-box">
+      <div class="feature">
+        <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\img2 (2).jpg" alt="Fast Delivery">
+        <h3>Fast Delivery</h3>
+        <p>Get fresh grains at your doorstep with speedy and reliable delivery.</p>
+      </div>
+      <div class="feature">
+        <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\img3 (2).jpg" alt="Premium Quality">
+        <h3>Premium Quality</h3>
+        <p>Only the finest grains, directly sourced from trusted farmers.</p>
+      </div>
+      <div class="feature">
+        <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\img4 (2).jpg" alt="Secure Payment">
+        <h3>Secure Payments</h3>
+        <p>Enjoy hassle-free shopping with 100% secure transactions.</p>
+      </div>
+    </div>
+  </section>
 
-        if (value === "C") {
-          currentInput = "";
-          display.textContent = "0";
-        } 
-        else if (value === "=") {
-          try {
-            currentInput = eval(currentInput).toString();
-            display.textContent = currentInput;
-          } catch {
-            display.textContent = "Error";
-          }
-        } 
-        else {
-          if (display.textContent === "0" || resetNext) {
-            display.textContent = value;
-            resetNext = false;
-          } else {
-            display.textContent += value;
-          }
-          currentInput = display.textContent;
-        }
-      });
-    });
-  </script>
+  <!-- About -->
+  <section class="about" id="about">
+    <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\img5 (2).jpg" alt="About Golden Grains">
+    <div class="about-content">
+      <h2>About Us</h2>
+      <p>At Golden Grains, we believe in bridging the gap between farmers and customers. 
+      Our mission is to deliver farm-fresh grains with complete transparency, 
+      ensuring health, trust, and sustainability for every family.
+      Golden Grains connects farmers and customers directly.
+      Our mission is to provide fresh and affordable grains to every household.</p>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="products" id="products">
+    <h2 class="section-title">Our Products</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\Wheatt.jpg" alt="Wheat">
+        <h3>Wheat</h3>
+        <p>High-nutrition wheat grains perfect for daily chapatis.</p>
+      </div>
+      <div class="product">
+        <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\ricee.jpg" alt="Rice">
+        <h3>Rice</h3>
+        <p>Aromatic and premium quality rice for your meals.</p>
+      </div>
+      <div class="product">
+        <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\Pulses.jpg" alt="Pulses">
+        <h3>Pulses</h3>
+        <p>Rich in proteins, a healthy choice for your family.</p>
+      </div>
+      <div class="product">
+        <img src="C:\Users\Shri\Downloads\Level1\Landing_Page\images\Millets.jpg" alt="Millets">
+        <h3>Millets</h3>
+        <p>Wholesome and organic millets for balanced nutrition.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <h2 class="section-title">Get in Touch</h2>
+    <p>Have questions or bulk order inquiries? Write to us!</p>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Golden Grains | All Rights Reserved</p>
+    <p>
+      <a href="#">Facebook</a> | 
+      <a href="#">Instagram</a> | 
+      <a href="#">LinkedIn</a>
+    </p>
+  </footer>
+
 </body>
 </html>
