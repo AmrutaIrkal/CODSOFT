@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Calculator</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #ffffff; /* White background */
+    }
+
+    .calculator {
+      width: 320px;
+      background: #000000; /* Calculator box black */
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Display */
+    .display {
+      background: #1a1a1a; /* Dark grey for display */
+      color: #ffffff;       /* White text */
+      font-size: 2rem;
+      padding: 20px;
+      text-align: right;
+      min-height: 70px;
+      word-wrap: break-word;
+      border-bottom: 1px solid #333;
+    }
+
+    /* Buttons Grid */
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 15px;
+    }
+
+    button {
+      background: #333333; /* Dark grey buttons */
+      color: #ffffff;      /* White text */
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 12px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background: #555555;
+      transform: scale(1.05);
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .operator {
+      background: #ff8c00;
+      color: #fff;
+    }
+
+    .operator:hover {
+      background: #e67e22;
+    }
+
+    .equal {
+      background: #27ae60;
+      color: #fff;
+      grid-column: span 2;
+    }
+
+    .equal:hover {
+      background: #2ecc71;
+    }
+
+    .clear {
+      background: #e74c3c;
+      color: #fff;
+    }
+
+    .clear:hover {
+      background: #c0392b;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <button class="clear">C</button>
+      <button class="operator">/</button>
+      <button class="operator">*</button>
+      <button class="operator">-</button>
+
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button class="operator">+</button>
+
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>.</button>
+
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>0</button>
+
+      <button class="equal">=</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById("display");
+    const buttons = document.querySelectorAll("button");
+    let currentInput = "";
+    let resetNext = false;
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        const value = button.textContent;
+
+        if (value === "C") {
+          currentInput = "";
+          display.textContent = "0";
+        } 
+        else if (value === "=") {
+          try {
+            currentInput = eval(currentInput).toString();
+            display.textContent = currentInput;
+          } catch {
+            display.textContent = "Error";
+          }
+        } 
+        else {
+          if (display.textContent === "0" || resetNext) {
+            display.textContent = value;
+            resetNext = false;
+          } else {
+            display.textContent += value;
+          }
+          currentInput = display.textContent;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
